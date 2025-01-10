@@ -1,4 +1,4 @@
-package com.sherpa.myapplication
+package com.sherpa.news_template_1
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

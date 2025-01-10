@@ -1,4 +1,4 @@
-package com.sherpa.myapplication
+package com.sherpa.news_template_1
 
 import org.junit.Test
 
