@@ -1,12 +1,12 @@
 package com.sherpa.news_template_1.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.sherpa.news_template_1.adapter.SearchViewPagerAdapter
 import com.sherpa.news_template_1.databinding.FragmentSearchBinding
 
 /**
@@ -40,17 +40,11 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewPagerAdapter = SearchViewPagerAdapter(this,tabTitleList.size)
+        viewPagerAdapter = SearchViewPagerAdapter(childFragmentManager, tabTitleList)
 
         binding.vPagerSearchFragment.adapter = viewPagerAdapter
-
-        TabLayoutMediator(
-            binding.tabLSearchFragment,
-            binding.vPagerSearchFragment
-        ) { tab, position ->
-            tab.text = tabTitleList[position]
-        }.attach()
-
+        binding.vPagerSearchFragment.offscreenPageLimit = 3
+        binding.tabLSearchFragment.setupWithViewPager(binding.vPagerSearchFragment)
     }
 
     override fun onDestroyView() {
