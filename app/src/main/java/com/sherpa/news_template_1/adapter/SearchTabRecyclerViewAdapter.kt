@@ -5,8 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sherpa.news_template_1.databinding.SearchTabRecyclerViewSingleItemBinding
 import com.sherpa.news_template_1.model.Article
+import com.sherpa.news_template_1.R
+import com.sherpa.news_template_1.util.getTimeAgo
+import kotlin.random.Random
 
 /**
  * CREATED BY->
@@ -54,6 +58,10 @@ class SearchTabRecyclerViewAdapter : RecyclerView.Adapter<SearchTabRecyclerViewA
        val article = differ.currentList[position]
         with(holder){
             holder.itemView.apply {
+                Glide.with(this).load(article.urlToImage).placeholder(R.drawable.placeholder).into(binding.imgSingleSearchItem)
+                binding.txtTitle.text = article.title
+                binding.txtTime.text = getTimeAgo(article.publishedAt.toString())
+                binding.txtViews.text = StringBuilder().append(Random.nextInt(200,5000)).append(" Views")
 
             }
         }

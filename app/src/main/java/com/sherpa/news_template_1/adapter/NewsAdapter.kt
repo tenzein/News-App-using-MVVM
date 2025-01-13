@@ -67,7 +67,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 Glide.with(this).load(article.urlToImage).placeholder(R.drawable.placeholder)
                     .into(binding.imgArticle)
                 binding.txtTitle.text = article.title
-                binding.txtTime.text = getTimeAgo(article.publishedAt)
+                binding.txtTime.text = getTimeAgo(article.publishedAt.toString())
                 binding.txtPublisher.text = StringBuilder().append("By ${article.source.name}")
 
 

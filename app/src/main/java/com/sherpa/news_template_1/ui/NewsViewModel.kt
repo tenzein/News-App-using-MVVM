@@ -3,7 +3,6 @@ package com.sherpa.news_template_1.ui
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sherpa.news_template_1.model.Article
 import com.sherpa.news_template_1.model.NewsResponse
 import com.sherpa.news_template_1.repository.NewsRepository
 import com.sherpa.news_template_1.util.Resource
@@ -20,39 +19,46 @@ class NewsViewModel
     (private val newsRepository: NewsRepository) : ViewModel() {
 
     val breakingNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
-    var breakingNewsNumber = 1
+
     var breakingNewsResponse: NewsResponse? = null
 
-    val localNewsList =  MutableLiveData<List<Article>>()
     init {
         getBreakingNews("us")
     }
 
 
-    fun getBreakingNews(countryCode: String) = viewModelScope.launch{
+    fun getBreakingNews(countryCode: String) = viewModelScope.launch {
 
         breakingNews.postValue(Resource.Loading())
 
-        val response = newsRepository.getBreakingNews(countryCode, breakingNewsNumber)
+        val response = newsRepository.getBreakingNews(countryCode, 1)
         breakingNews.postValue(handleBreakingNews(response))
 
     }
 
 
-    fun handleBreakingNews(response: Response<NewsResponse>) : Resource<NewsResponse>{
+    fun handleBreakingNews(response: Response<NewsResponse>): Resource<NewsResponse> {
 
-        if(response.isSuccessful){
+        if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
 
-                breakingNewsNumber++
-                if(breakingNewsResponse == null){
+                if (breakingNewsResponse == null) {
                     breakingNewsResponse = resultResponse
-                }else{
+                } else {
                     val oldArticles = breakingNewsResponse?.articles
                     val newArticles = resultResponse.articles
                     oldArticles?.addAll(newArticles)
                 }
 
+                viewModelScope.launch {
+                    resultResponse.let {
+                        for (article in it.articles) {
+                           if (!article.title.isNullOrEmpty()){
+                                newsRepository.upsertArticle(article)
+                            }
+                        }
+                    }
+                }
 
                 return Resource.Success(breakingNewsResponse ?: resultResponse)
 
