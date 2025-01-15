@@ -91,6 +91,7 @@ class HomePageFragment : Fragment(){
 
         }
 
+
     }
 
     private fun setUpNewsOfTheDay(article: Article){
