@@ -1,5 +1,6 @@
 package com.sherpa.news_template_1.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -42,6 +43,9 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     private lateinit var binding: BreakingNewsRvSingleItemBinding
 
+
+    private var onItemClickListener: ((Article) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -70,15 +74,24 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 binding.txtTime.text = getTimeAgo(article.publishedAt.toString())
                 binding.txtPublisher.text = StringBuilder().append("By ${article.source.name}")
 
-
+                binding.clMainBreakingNews.setOnClickListener() {
+                    onItemClickListener?.let { it(article) }
+                }
             }
         }
+
+
 
 
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+
+    fun setOnItemClickListener(listener: (Article) -> Unit) {
+        onItemClickListener = listener
     }
 
 

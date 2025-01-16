@@ -1,7 +1,7 @@
 package com.sherpa.news_template_1.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sherpa.news_template_1.adapter.SearchTabRecyclerViewAdapter
 import com.sherpa.news_template_1.databinding.SearchViewpagerFragmentBinding
+import com.sherpa.news_template_1.ui.DetailActivity
 import com.sherpa.news_template_1.ui.MainActivity
 import com.sherpa.news_template_1.ui.NewsViewModel
-import com.sherpa.news_template_1.util.Constants.Companion.ARG_OBJECT
 
 /**
  * CREATED BY->
@@ -41,8 +41,13 @@ class SearchViewPagerFragment : Fragment() {
         viewModel = (activity as MainActivity).viewModel
         setUpRecyclerView()
 
-        val id = arguments?.getInt(ARG_OBJECT)
-            fetchLocalData()
+        mSearchAdapter.setOnItemClickListener { it ->
+            val intent = Intent(activity, DetailActivity::class.java)
+            intent.putExtra("article", it)
+            activity?.startActivity(intent)
+
+        }
+        fetchLocalData()
     }
 
     private fun fetchLocalData() {

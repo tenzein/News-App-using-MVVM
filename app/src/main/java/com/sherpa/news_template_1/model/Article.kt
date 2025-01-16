@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.sherpa.news_template_1.db.Converters
+import java.io.Serializable
 
 
 @Entity(
@@ -21,4 +22,4 @@ data class Article(
     val title: String?,
     val url: String?,
     val urlToImage: String?
-) : java.io.Serializable
+) : Serializable
