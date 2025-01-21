@@ -16,9 +16,7 @@ MVVM(Model View ViewModel) sample in Kotlin using the components ViewModel, Live
 
 ### Screenshots
 
-<img src="assets/homepage.png" height="480">
-
-<img src="assets/searchpage.png" height="196"> 
+<img src="assets/homepage.png" height="480">      <img src="assets/searchpage.png" height="480"> 
 
 #### Note: To run the app you have to add [NewsAPI.org](https://newsapi.org/register) key. I have taken this step to due to limited access to daily request for News. Getting a key would take just few seconds :)
 
@@ -96,6 +94,6 @@ Android MVVM Clean https://docs.google.com/presentation/d/1luTzvqGaMjVycEx109-Aj
 
 ### Contributing and reporting issues
 
-If you want to contribute in this repository, please send me a pull request or if you want to report some issues please send at https://github.com/ten/kotlin-mvvm/issues
+If you want to contribute in this repository, please send me a pull request or if you want to report some issues please send at [https://github.com/ten/kotlin-mvvm/issues](https://github.com/tenzein/News-App-using-MVVM/issues)
 
 I appreciate any question or comment. Also, if you consider it useful, you can give me a star ⭐ ⭐ ⭐.
