@@ -16,9 +16,9 @@ MVVM(Model View ViewModel) sample in Kotlin using the components ViewModel, Live
 
 ### Screenshots
 
-<img src="assets/homepage.png.png" height="480">
+<img src="assets/homepage.png" height="480">
 
-<img src="assets/searchpage.png.png" height="196"> 
+<img src="assets/searchpage.png" height="196"> 
 
 #### Note: To run the app you have to add [NewsAPI.org](https://newsapi.org/register) key. I have taken this step to due to limited access to daily request for News. Getting a key would take just few seconds :)
 
