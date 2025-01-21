@@ -94,6 +94,6 @@ Android MVVM Clean https://docs.google.com/presentation/d/1luTzvqGaMjVycEx109-Aj
 
 ### Contributing and reporting issues
 
-If you want to contribute in this repository, please send me a pull request or if you want to report some issues please send at [https://github.com/ten/kotlin-mvvm/issues](https://github.com/tenzein/News-App-using-MVVM/issues)
+If you want to contribute in this repository, please send me a pull request or if you want to report some issues please send at https://github.com/tenzein/News-App-using-MVVM/issues
 
 I appreciate any question or comment. Also, if you consider it useful, you can give me a star ⭐ ⭐ ⭐.
