@@ -23,10 +23,7 @@ MVVM(Model View ViewModel) sample in Kotlin using the components ViewModel, Live
 #### Setup API Key
 1. Visit [NewsAPI.org](https://newsapi.org/register) to get your API Key
 2. Copy your API Key from accounts section
-3. Open `gradle.properties` *(Create the file if not exists)*
-    - For Linux/Mac: `/home/.gradle/gradle.properties`
-    - For Windows: `C:\Users\<UserName>\.gradle\gradle.properties`
-    - Add the following line:
+3. Add the API KEY line:
     ```
     NewsApi_ApiKey="YOUR_API_KEY"
     ``` 
